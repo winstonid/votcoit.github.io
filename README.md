@@ -1,2 +1,2 @@
-# winstonid.github.io
-Personal Website
+# votcoit.github.io
+Consulting Website + Bio
