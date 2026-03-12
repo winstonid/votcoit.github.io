@@ -17,6 +17,47 @@
       --accent: #ffb400;
       --max-width: 1100px;
     }
+
+    /* Add this at the START of your <style> section, after :root */
+    html {
+      scroll-behavior: smooth;
+    }
+
+  /* FIXED: Back to top CSS */
+    #back-to-top {
+      position: fixed !important;
+      bottom: 30px;
+      right: 30px;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(11, 158, 217, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 10000;  /* Higher z-index */
+    }
+
+    #back-to-top:hover {
+      background: #07aef1;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(11, 158, 217, 0.5);
+    }
+
+    #back-to-top.show {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateY(0) !important;
+    }
+
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -71,6 +112,36 @@
     }
     .nav-links a:hover { opacity: 1; }
 
+    .project-logos {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .project-logo {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .project-logo img {
+      height: 20px;
+      width: auto;
+      display: block;
+    }
+
+    .project-logo span {
+      font-weight: 500;
+    }
+
     main {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -83,6 +154,14 @@
       font-size: 28px;
       margin-bottom: 12px;
       color: var(--primary);
+
+    /* Hover effect for clickable logos */
+    .clients-strip a:hover div {
+      transform: scale(1.05);
+    }
+
+    
+
     }
     .section-intro {
       font-size: 16px;
@@ -212,6 +291,7 @@
     }
   </style>
 </head>
+
 <body>
 
 <header>
@@ -262,13 +342,66 @@
   </section>
 
   <section id="projects">
-    <h2>My Past Engagements &amp; Projects</h2>
+    <h2>Clients I've worked with</h2>
     
-    <div class="grid-3">
+        <!--Clients Logos Strip" Section -->
+    <div class="clients-strip">
+      <!-- do not show heading 3 -->
+      <!-- <h3 style="text-align: center; margin-bottom: 30px; color: var(--muted);">Select Projects & Engagements</h3> -->
       
-    <!--MAXIMO PROJECTS -->
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 50px; margin-bottom: 50px;">
+        
+    <!-- EDC - Clickable - Real Image -->
+    <a href="#project-edc" style="text-decoration: none; color: inherit;">
+      <div style="text-align: center; cursor: pointer; transition: transform 0.2s; padding: 20px;">
+        <div style="width: 120px; height: 120px; background: white; border-radius: 16px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); margin: 0 auto 12px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <img src="images/edc-logo.png" alt="EDC Logo" style="height: 60px; width: auto; object-fit: contain; border-radius: 8px;" />
+          <p style="margin: 8px 0 0 0; font-size: 13px; color: var(--muted);">2021–2024</p>
+        </div>
+        <p style="margin: 0; font-size: 15px; font-weight: 500; line-height: 1.4; max-width: 140px; margin: 0 auto;">Energy Development Corp</p>
+      </div>
+    </a>
 
-    <div class="card">
+    <!-- HKBAC -->
+    <a href="#project-hkbac" style="text-decoration: none; color: inherit;">
+          <div style="text-align: center; cursor: pointer; transition: transform 0.2s; padding: 20px;">
+            <div style="width: 120px; height: 120px; background: white; border-radius: 16px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); margin: 0 auto 12px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <img src="images/hkbac-logo.png" alt="EDC Logo" style="height: 60px; width: auto; object-fit: contain; border-radius: 8px;" />
+              <p style="margin: 8px 0 0 0; font-size: 13px; color: var(--muted);">2021–2024</p>
+            </div>
+            <p style="margin: 0; font-size: 15px; font-weight: 500; line-height: 1.4; max-width: 140px; margin: 0 auto;">Hong Kong Business Aviation</p>
+          </div>
+        </a>
+
+    <!-- Makati City Government -->
+        <a href="#project-makati" style="text-decoration: none; color: inherit;">
+          <div style="text-align: center; cursor: pointer; transition: transform 0.2s; padding: 20px;">
+            <div style="width: 120px; height: 120px; background: white; border-radius: 16px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); margin: 0 auto 12px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <img src="images/makati-logo.png" alt="EDC Logo" style="height: 60px; width: auto; object-fit: contain; border-radius: 8px;" />
+              <p style="margin: 8px 0 0 0; font-size: 13px; color: var(--muted);">2021–2024</p>
+            </div>
+            <p style="margin: 0; font-size: 15px; font-weight: 500; line-height: 1.4; max-width: 140px; margin: 0 auto;">EMakati City Government</p>
+          </div>
+        </a>
+
+     <!-- Mamasita -->
+        <a href="#project-mamasita" style="text-decoration: none; color: inherit;">
+          <div style="text-align: center; cursor: pointer; transition: transform 0.2s; padding: 20px;">
+            <div style="width: 120px; height: 120px; background: white; border-radius: 16px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); margin: 0 auto 12px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+              <img src="images/mamasita-logo.png" alt="EDC Logo" style="height: 60px; width: auto; object-fit: contain; border-radius: 8px;" />
+              <p style="margin: 8px 0 0 0; font-size: 13px; color: var(--muted);">2021–2024</p>
+            </div>
+            <p style="margin: 0; font-size: 15px; font-weight: 500; line-height: 1.4; max-width: 140px; margin: 0 auto;">Mamasita Manufacturing</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+
+    <div class="grid-3">
+    <!--MAXIMO PROJECTS -->
+    <div class="card" id="project-housing">
         <span class="badge">MAXIMO in Government</span>
         <h3>Facilities &amp; Propery Management - "The Asset Management System Implementation" - Sub-contractor for PCCW Digital Solutions Limited for Housing Authority, Hong Kong - 2025/26</h3>
         <ul>
@@ -284,7 +417,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-hkbac">
         <span class="badge">MAXIMO Cloud Migration</span>
         <h3>Aviation Industry, a Fixed-Base Operator (FBO)  - "MOS Upgrade" - Hong Kong Business Aviation Centre (HKBAC) - 2024/25</h3>
         <ul>
@@ -299,7 +432,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card"  id="project-hkland">
         <span class="badge">MAXIMO for Properties</span>
         <h3>Real Estate, Investment &amp; Property Development - "SAML-based single Sign one (SSO)" - HongKong Land, Hong Kong - 2023</h3>
         <ul>
@@ -312,7 +445,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-makati">
         <span class="badge">MAXIMO in Government</span>
         <h3>Government, a SMART CITY Project Initiative  - AMS Implementation - Makati City Government, Philippines - 2022</h3>
         <ul>
@@ -330,7 +463,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card"  id="project-mamasita">
         <span class="badge">MAXIMO Manufacturing</span>
         <h3>Factory Automation - AMS re-implementation/Upgrade Mamasita, Philippines- 2021/24</h3>
         <ul>
@@ -346,11 +479,11 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-edc">
         <span class="badge">MAXIMO Utilities</span>
         <h3> Energy Industry - EAM Implementation - Energy Development Corporation (EDC), Philippines - 2021/24</h3>
         <ul>
-          <li>Digital Transformation</li>
+          <li>Digital Transformation accross 6 sites</li>
           <li>Asset Performance &amp; Regulatory Compliance </li>
           <li>Facility Operations</li>
           <li>Asset Management</li>
@@ -359,18 +492,27 @@
           <li>Service Request, CM &amp; Preventive maintenance automation</li>
           <li>Safety Management</li>
           <li>Production reporting</li>
-          <li>Integration with SAP (Financials), Coupa(Purchasing/Procurement) EMS</li>
+          <li>Integration with SAP (Financials), Coupa(Purchasing/Procurement), EMS</li>
           <li>Inventory Management</li>
           <li>Purchase Requisitions and Procurement Management</li>
           <li>Budget Request</li>
           <li>Future for AI/Predictive Analytics</li>
+          <li>Delivered 51 change requests in 1 year</li>
         <p>
           Liaison with the client for HyperCare Support for Maximo Implementation, Support S2S (Head Office <—> 5 Remote Sites) bi-directional synchronisation,  Application Management Support (AMS), Change Requests Projects. Implemented 51 CR projects in one (1) year.
         </p>
         </ul>
+        <!-- NEW: client logo area -->
+        <div class="project-logos">
+          <!-- When you have the real logo, replace edc-logo.png -->
+          <div class="project-logo">
+            <img src="images/edc-logo.png" alt="Energy Development Corporation logo" />
+            <span>Energy Development Corporation (EDC) Philippines</span>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
+      <div class="card"  id="project-hkjc">
         <span class="badge">MAXIMO Consulting</span>
         <h3> Asset and Facilities Management  -  Enterprise EAM Strategy Study across 9 Divisions Project -  Hong Kong Jockey Club, Hong Kong - 2014/15</h3>
         <ul>
@@ -385,7 +527,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-disney">
         <span class="badge">MAXIMO Hospitality</span>
         <h3> Amusement and Theme Park Industry  -  "Maximo 4.11 Implementation" -  Hong Kong Disneyland, Hong Kong - 2004/2006</h3>
         <ul>
@@ -402,7 +544,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card"  id="project-disney2">
         <span class="badge">MAXIMO Hospitality</span>
         <h3> Amusement and Theme Park Industry  -  "Global Maximo Convergence &amp; Maximo 6.2 Upgrade Project" -  Hong Kong Disneyland, Hong Kong - 2004/2006</h3>
         <ul>
@@ -418,7 +560,7 @@
       </div>
 
 
-      <div class="card">
+      <div class="card"  id="project-petron">
         <span class="badge">MAXIMO Utilities</span>
         <h3> Oil &amp; Gas Industry  -  "SRM Landscape DB & OS Technical Upgrade Support Project" - Petron, Philippines - 2021/24</h3>
         <ul>
@@ -430,7 +572,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-lrmc">
         <span class="badge">MAXIMO Transport</span>
         <h3> Rail Authority  -  "Change Request" - Light Rail Manila (LRMC), Philippines - 2021/24</h3>
         <ul>
@@ -443,7 +585,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-bpi">
         <span class="badge">MAXIMO in Banking</span>
         <h3> Banking Industry  -  "Upgrade Implementation 7.6.1.2" - Bank of Philippine Islands (BPI), Philippines - 2021/24</h3>
         <ul>
@@ -456,7 +598,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-aboitiz">
         <span class="badge">MAXIMO in Utilities</span>
         <h3>Oil &amp; Gas Industry   -  "Maximo 4.11 Implementation" - Aboitiz Power, Philippines - 2021/24</h3>
         <ul>
@@ -464,7 +606,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-planning">
         <span class="badge">Pinnacle EAM in Government </span>
         <h3> Government -  "I.T. Asset Management System Implementation" - Planning Department of HKSAR Gov’t, Hong Kong - </h3>
         <ul>
@@ -472,7 +614,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-water">
         <span class="badge">Pinnacle EAM for Utlities</span>
         <h3> Water Industry  -  "Surface Asset Management Project" - Water Supplies Department, Hong Kong</h3>
         <ul>
@@ -483,7 +625,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-swire">
         <span class="badge">MAXIMO for Properties</span>
         <h3>Property Management -  "Maximo 4.11 Implementation" - Swire Properties, Hong Kong</h3>
         <ul>
@@ -498,7 +640,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-bpi">
         <span class="badge">MAXIMO in Banking</span>
         <h3> Banking Industry  -  "Upgrade Implementation 7.6.1.2" - Bank of Philippine Islands (BPI), Philippines - 2021/24</h3>
         <ul>
@@ -515,7 +657,7 @@
 
       <!--TRIRIGA PROJECTS -->
 
-      <div class="card">
+      <div class="card" id="project-lingnan">
         <span class="badge">TRIRIGA Workplace</span>
         <h3>Higher Education - "Development of Facilities Management System (FMS)" - Lingnan University, Hong Kong - 2020/21</h3>
         <ul>
@@ -534,7 +676,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-huawei">
         <span class="badge">TRIRIGA Lease Accounting </span>
         <h3>Implementation of TRIRIGA Lease Accounting (IFRS16) - Huawei, China - 2018/19</h3>
         <ul>
@@ -545,7 +687,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-huawei2">
         <span class="badge">TRIRIGA Real Estate</span>
         <h3>Corporate Real Estate Portfolio - Huawei (Implementation of Integrated Workplace Management System), China - 2017</h3>
         <ul>
@@ -561,7 +703,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-hkjc2">
         <span class="badge">TRIRIGA Real Estate</span>
         <h3>Real Estate Portfolio - Central Police Station (Tai Kwun), Hong Kong Jockey Club, Hong Kong - 2017/19</h3>
         <ul>
@@ -581,7 +723,7 @@
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id="project-trus">
         <span class="badge">TRIRIGA Real Estate</span>
         <h3>Leasing Portfolio - Toys “R” Us (JV with Li & Fung), Hong Kong - 2016</h3>
         <ul>
@@ -593,7 +735,7 @@
         </ul>
       </div>
 
-     <div class="card">
+     <div class="card" id="project-dfg">
         <span class="badge">TRIRIGA Real Estate</span>
         <h3>Leasing Portfolio - The Dairy Farm Company Ltd, Hong Kong - 2012/14</h3>
         <ul>
@@ -613,7 +755,11 @@
 
     </div>
   </section>
+
 </main>
+
+ <!-- NEW: Back to Top Button -->
+<button id="back-to-top" title="Back to Top">↑</button>
 
 <footer>
   © <span id="year"></span> Votco IT Consulting · 
@@ -621,9 +767,80 @@
   <a href="index.html#contact">Contact Winston</a>
 </footer>
 
+
+<!--
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Smooth scroll to top
+  document.getElementById('back-to-top').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Show/hide button on scroll
+  window.addEventListener('scroll', function() {
+    const button = document.getElementById('back-to-top');
+    if (window.scrollY > 400) {
+      button.classList.add('show');
+    } else {
+      button.classList.remove('show');
+    }
+  });
 </script>
+-->
+<script>
+  // Year update
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Back to top functionality - FIXED
+  function initBackToTop() {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) {
+      console.log('Back to top button not found');
+      return;
+    }
+
+    // Smooth scroll to top
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Show/hide button on scroll
+    let ticking = false;
+    function updateButton() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      if (scrollY > 400) {
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(updateButton);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  // Initialize when DOM is loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBackToTop);
+  } else {
+    initBackToTop();
+  }
+</script>
+
 
 </body>
 </html>
