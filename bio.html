@@ -123,6 +123,55 @@
       transform: scale(1.05);
     }
 
+
+    #back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(11, 158, 217, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+    }
+
+    #back-to-top:hover {
+      background: #07aef1;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(11, 158, 217, 0.5);
+    }
+
+    #back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 700px) {
+      #back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+      }
+    }
+
+
+
+
+
     }
     .section-intro {
       font-size: 16px;
@@ -252,6 +301,14 @@
     }
   </style>
 </head>
+
+
+
+
+
+
+
+
 <body>
 
 <header>
@@ -307,18 +364,11 @@
         <!--Clients Logos Strip" Section -->
     <div class="clients-strip">
       <!-- do not show heading 3 -->
-      <!-- <h3 style="text-align: center; margin-bottom: 30px; color: var(--muted);">Select Projects & Engagements</h3>
-      -->
+      <!-- <h3 style="text-align: center; margin-bottom: 30px; color: var(--muted);">Select Projects & Engagements</h3> -->
+      
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 50px; margin-bottom: 50px;">
         
-        <!-- EDC 
-        <div style="text-align: center;">
-          <img src="images/edc-logo.png" alt="EDC Logo" style="height: 80px; width: auto;" />
-          <p style="margin: 8px 0 0 0; font-size: 14px;">Energy Development Corp</p>
-        </div>
--->
-         <!-- EDC - Clickable -->
-        <!-- EDC - Real Image -->
+    <!-- EDC - Clickable - Real Image -->
     <a href="#project-edc" style="text-decoration: none; color: inherit;">
       <div style="text-align: center; cursor: pointer; transition: transform 0.2s; padding: 20px;">
         <div style="width: 120px; height: 120px; background: white; border-radius: 16px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); margin: 0 auto 12px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -726,15 +776,49 @@
   </section>
 </main>
 
+<!-- Floating Back to Top Button -->
+<button id="back-to-top" title="Back to Top">↑</button>
+
+
 <footer>
   © <span id="year"></span> Votco IT Consulting · 
   <a href="https://www.votcoit.com/">www.votcoit.com</a> · 
   <a href="index.html#contact">Contact Winston</a>
 </footer>
 
+<!-- NEW: Back to Top Button -->
+<button id="back-to-top" title="Back to Top">↑</button>
+
+
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+
+<!-- Added JAvascript for back to top icon -->
+<script>
+  // Smooth scroll to top
+  document.getElementById('back-to-top').addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  // Show/hide button on scroll
+  window.addEventListener('scroll', function() {
+    const button = document.getElementById('back-to-top');
+    if (window.scrollY > 400) {
+      button.classList.add('show');
+    } else {
+      button.classList.remove('show');
+    }
+  });
+</script>
+
+
+
+
 
 </body>
 </html>
