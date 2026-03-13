@@ -173,7 +173,56 @@
       transform: scale(1.05);
     }
 
-    
+    /* NEW: Photo beside section-intro */
+    .about-with-photo {
+      margin-bottom: 40px;
+    }
+
+    .photo-and-bio {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 30px;
+      align-items: start;
+      margin-bottom: 30px;
+    }
+
+    .photo-container {
+      text-align: center;
+    }
+
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 12px 24px rgba(15,23,42,0.15);
+      border: 3px solid white;
+      background: white;
+    }
+
+    .bio-content {
+      flex: 1;
+    }
+
+    .bio-content h2 {
+      margin-bottom: 16px;
+    }
+
+    /* Mobile: Stack photo above text */
+    @media (max-width: 768px) {
+      .photo-and-bio {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        text-align: center;
+      }
+      
+      .profile-photo {
+        width: 140px;
+        height: 140px;
+        margin: 0 auto;
+      }
+    }
+
 
 
     .section-intro {
@@ -327,11 +376,25 @@
 <main>
   <a href="index.html" class="back-link">← Back to Services</a>
 
-  <section>
+   <!-- <section> -->
+
+  <section class="about-with-photo">
+  <div class="photo-and-bio">
+    <!-- NEW: Photo on left -->
+    <div class="photo-container">
+      <img src="winston-photo.jpg" alt="Winston P Millamena Junior" class="profile-photo" />
+    </div>
+    
+    <!-- Your existing content on right -->
+    <div class="bio-content">
+
+
     <h2>About Winston P Millamena Junior.</h2>
     <p class="section-intro">
       Results-driven Project Manager with 25+ years of experience leading large-scale EAM, IWMS, and CMMS implementations across healthcare, hospitality, utilities, and government sectors. Proven ability to manage multi-million-dollar budgets, cross-functional teams (30+ members), and complex integrations (SAP, IoT, Cloud). Adept at risk mitigation, stakeholder alignment, and Agile/Waterfall delivery. PMP trained with expertise in Maximo, TRIRIGA, and ERP systems. 
     </p>
+
+    <!-- Stats -->
     <div class="hero-bio">
       <div class="bio-stats">
         <div class="stat-card">
@@ -352,6 +415,7 @@
         </div>
       </div>
     </div>
+  </div>
   </section>
 
   <section id="projects">
